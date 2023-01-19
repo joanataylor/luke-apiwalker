@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useSubmit } from "react-router-dom";
 import axios from "axios";
+import Obi from "./img/obi.jpeg";
 
 function OnePerson() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ function OnePerson() {
     return (
       <div>
         <h4>These aren't the droids you're looking for</h4>
-        <img src="img/obi.jpeg" alt="error" />
+        <img src={Obi} alt="error" />
       </div>
     );
   }
