@@ -5,6 +5,7 @@ import axios from "axios";
 function OnePlanet() {
   const { id } = useParams();
   const [planet, setPlanet] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
@@ -13,8 +14,20 @@ function OnePlanet() {
         console.log(res.data);
         setPlanet(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch(err => {
+        setError(err);
+        console.log("These aren't the droids you're looking for", err);
+      });
   }, [id]);
+
+  if (error) {
+    return (
+      <div>
+        <h4>These aren't the droids you're looking for</h4>
+        <img src="img/obi.jpeg" alt="error" />
+      </div>
+    );
+  }
 
   return (
     <div className="card">
